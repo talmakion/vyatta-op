@@ -158,6 +158,7 @@ unset _vyatta_extglob
     declare -x -r vyos_libexec_dir=/usr/libexec/vyos
     declare -x -r vyos_bin_dir=/usr/bin
     declare -x -r vyos_sbin_dir=/usr/sbin
+    declare -x -r vyos_share_dir=/usr/share
 
     if test -z "$vyos_conf_scripts_dir" ; then
         declare -x -r vyos_conf_scripts_dir=$vyos_libexec_dir/conf_mode
@@ -170,6 +171,9 @@ unset _vyatta_extglob
     fi
     if test -z "$vyos_validators_dir" ; then
         declare -x -r vyos_validators_dir=$vyos_libexec_dir/validators
+    fi
+    if test -z "$vyos_data_dir" ; then
+        declare -x -r vyos_data_dir=$vyos_share_dir/vyos
     fi
     if test -z "$vyos_persistence_dir" ; then
         UNION_NAME=$(cat /proc/cmdline | sed -e s+^.*vyos-union=++ | sed -e 's/ .*$//')
